@@ -15,7 +15,7 @@ import com.example.newsappproject.ui.NewsViewModel
 import com.google.android.material.snackbar.Snackbar
 
 
-class ArticleFragment : Fragment(R.layout.fragment_article) {
+class ArticleFragment : Fragment() {
 
     lateinit var newsViewModel: NewsViewModel
     val args:ArticleFragmentArgs by navArgs()
@@ -37,7 +37,7 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
         binding.webView.apply {
             webViewClient = WebViewClient()
             article.url.let{
-                loadUrl(it)
+                loadUrl(it.toString())
             }
         }
 
@@ -47,4 +47,13 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
 
         }
     }
+
 }
+
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        binding.webView.clearHistory()
+//        binding.webView.clearCache(true)
+//        binding.webView.destroy()
+//        _binding = null
+//    }

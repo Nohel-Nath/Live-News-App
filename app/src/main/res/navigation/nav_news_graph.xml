@@ -9,7 +9,7 @@
         android:id="@+id/headlinesFragment"
         android:name="com.example.newsappproject.fragments.HeadlineFragment"
         android:label="fragment_headline"
-        tools:layout="@layout/fragment_headline" >
+        tools:layout="@layout/fragment_headline">
         <action
             android:id="@+id/action_headlinesFragment_to_articleFragment"
             app:destination="@id/articleFragment" />
@@ -19,7 +19,7 @@
         android:id="@+id/articleFragment"
         android:name="com.example.newsappproject.fragments.ArticleFragment"
         android:label="fragment_article"
-        tools:layout="@layout/fragment_article" >
+        tools:layout="@layout/fragment_article">
         <argument
             android:name="article"
             app:argType="com.example.newsappproject.models.Article" />
@@ -29,46 +29,47 @@
         android:id="@+id/favouritesFragment"
         android:name="com.example.newsappproject.fragments.FavouriteFragment"
         android:label="fragment_favourite"
-        tools:layout="@layout/fragment_favourite" >
+        tools:layout="@layout/fragment_favourite">
         <action
             android:id="@+id/action_favouriteFragment_to_articleFragment"
             app:destination="@id/articleFragment" />
-<!--        <action-->
-<!--        android:id="@+id/action_favouriteFragment_to_headlinesFragment"-->
-<!--        app:destination="@id/headlinesFragment" />-->
     </fragment>
     <fragment
         android:id="@+id/search2Fragment"
         android:name="com.example.newsappproject.fragments.SearchFragment"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" >
+        tools:layout="@layout/fragment_search">
         <action
             android:id="@+id/action_searchFragment_to_articleFragment"
             app:destination="@id/articleFragment" />
-<!--        <action-->
-<!--        android:id="@+id/action_searchFragment_to_headlinesFragment"-->
-<!--        app:destination="@id/headlinesFragment" />-->
     </fragment>
 
 </navigation>
 
-<!--<action-->
-<!--android:id="@+id/action_headlineFragment_to_favouriteFragment"-->
-<!--app:destination="@id/favouritesFragment" />-->
-<!--<action-->
-<!--android:id="@+id/action_headlineFragment_to_searchFragment"-->
-<!--app:destination="@id/search2Fragment" />-->
+    <!--<action-->
+    <!--android:id="@+id/action_headlineFragment_to_favouriteFragment"-->
+    <!--app:destination="@id/favouritesFragment" />-->
+    <!--<action-->
+    <!--android:id="@+id/action_headlineFragment_to_searchFragment"-->
+    <!--app:destination="@id/search2Fragment" />-->
 
 
-<!--<action-->
-<!--android:id="@+id/action_favouriteFragment_to_headlineFragment"-->
-<!--app:destination="@id/headlineFragment" />-->
-<!--<action-->
-<!--android:id="@+id/action_favouriteFragment_to_searchFragment"-->
-<!--app:destination="@id/search2Fragment" />-->
+    <!--<action-->
+    <!--android:id="@+id/action_favouriteFragment_to_headlineFragment"-->
+    <!--app:destination="@id/headlineFragment" />-->
+    <!--<action-->
+    <!--android:id="@+id/action_favouriteFragment_to_searchFragment"-->
+    <!--app:destination="@id/search2Fragment" />-->
 
 
-<!--<action-->
-<!--android:id="@+id/action_searchFragment_to_headlineFragment"-->
-<!--app:destination="@id/headlineFragment" />-->
+    <!--<action-->
+    <!--android:id="@+id/action_searchFragment_to_headlineFragment"-->
+    <!--app:destination="@id/headlineFragment" />-->
+    <!--        <action-->
+    <!--        android:id="@+id/action_favouriteFragment_to_headlinesFragment"-->
+    <!--        app:destination="@id/headlinesFragment" />-->
+
+    <!--        <action-->
+    <!--        android:id="@+id/action_searchFragment_to_headlinesFragment"-->
+    <!--        app:destination="@id/headlinesFragment" />-->
 
