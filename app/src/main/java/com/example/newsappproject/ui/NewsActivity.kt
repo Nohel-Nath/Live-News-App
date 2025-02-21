@@ -20,33 +20,12 @@ class NewsActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val newsRepository = NewsRepository(ArticleDatabase(this))
-        val viewModelProviderFactory = NewsViewModelProviderFactory(application,newsRepository)
+        val viewModelProviderFactory = NewsViewModelProviderFactory(application, newsRepository)
         newsViewModel = ViewModelProvider(this, viewModelProviderFactory)[NewsViewModel::class.java]
-
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.newsNavHostFragment) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.newsNavHostFragment) as NavHostFragment
         val navController = navHostFragment.navController
         binding.bottomNavigationView.setupWithNavController(navController)
-
-        val currentFragment = navController.currentDestination?.id
-
-        binding.bottomNavigationView.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.headlinesFragment->{
-                    navController.navigate(R.id.action_favouriteFragment_to_headlineFragment)
-                    true
-                }
-                R.id.favouritesFragment -> {
-                    navController.navigate(R.id.action_headlineFragment_to_favouriteFragment)
-                    true
-                }
-                R.id.search2Fragment -> {
-                    navController.navigate(R.id.action_headlineFragment_to_searchFragment)
-                    true
-                }
-
-                else -> false
-            }
-        }
 
     }
 }
@@ -64,4 +43,23 @@ class NewsActivity : AppCompatActivity() {
 //R.id.headlineFragment->{
 //    navController.navigate(R.id.action_searchFragment_to_headlineFragment)
 //    true
+//}
+
+//binding.bottomNavigationView.setOnItemSelectedListener { item ->
+//    when (item.itemId) {
+//        R.id.headlinesFragment->{
+//            navController.navigate(R.id.action_favouriteFragment_to_headlineFragment)
+//            true
+//        }
+//        R.id.favouritesFragment -> {
+//            navController.navigate(R.id.action_headlineFragment_to_favouriteFragment)
+//            true
+//        }
+//        R.id.search2Fragment -> {
+//            navController.navigate(R.id.action_headlineFragment_to_searchFragment)
+//            true
+//        }
+//
+//        else -> false
+//    }
 //}

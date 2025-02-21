@@ -25,18 +25,25 @@ import com.example.newsappproject.ui.NewsViewModel
 import com.example.newsappproject.utlis.Constants
 import com.example.newsappproject.utlis.Resource
 
-class HeadlineFragment : Fragment(R.layout.fragment_headline) {
+class HeadlineFragment : Fragment() {
     lateinit var newsViewModel: NewsViewModel
     lateinit var newsAdapter: NewsAdapter
     lateinit var retryButton: Button
     lateinit var errorText: TextView
     lateinit var itemHeadlinesError: CardView
-    lateinit var binding: FragmentHeadlineBinding
+    private var _binding: FragmentHeadlineBinding? = null
+    private val binding get() = requireNotNull(_binding)
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentHeadlineBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentHeadlineBinding.bind(view)
-
         itemHeadlinesError = view.findViewById(R.id.itemHeadlinesError)
         val inflater =
             requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -49,7 +56,7 @@ class HeadlineFragment : Fragment(R.layout.fragment_headline) {
             val bundle = Bundle().apply {
                 putSerializable("article", it)
             }
-            findNavController().navigate(R.id.action_headlineFragment_to_favouriteFragment, bundle)
+            findNavController().navigate(R.id.action_headlinesFragment_to_articleFragment, bundle)
         }
         newsViewModel.headlines.observe(viewLifecycleOwner, Observer { response ->
             when (response) {

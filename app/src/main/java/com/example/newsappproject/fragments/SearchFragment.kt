@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.AbsListView
 import android.widget.Button
 import android.widget.TextView
@@ -29,18 +30,26 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.delay
 import androidx.lifecycle.lifecycleScope
 
-
-class SearchFragment : Fragment(R.layout.fragment_search) {
+class SearchFragment : Fragment() {
     lateinit var newsViewModel: NewsViewModel
     lateinit var newsAdapter: NewsAdapter
-    lateinit var binding: FragmentSearchBinding
     lateinit var retryButton:Button
     lateinit var errorText: TextView
     lateinit var itemSearchError: CardView
+    private var _binding: FragmentSearchBinding? = null
+    private val binding get() = requireNotNull(_binding)
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentSearchBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentSearchBinding.bind(view)
+        //binding = FragmentSearchBinding.bind(view)
         itemSearchError = view.findViewById(R.id.itemSearchError)
         val inflater =
             requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater

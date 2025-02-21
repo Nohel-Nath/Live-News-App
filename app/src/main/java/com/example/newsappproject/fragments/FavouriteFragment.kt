@@ -2,8 +2,10 @@ package com.example.newsappproject.fragments
 
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
+import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -16,16 +18,23 @@ import com.example.newsappproject.ui.NewsActivity
 import com.example.newsappproject.ui.NewsViewModel
 import com.google.android.material.snackbar.Snackbar
 
-class FavouriteFragment : Fragment(R.layout.fragment_favourite) {
+class FavouriteFragment : Fragment() {
 
     lateinit var newsViewModel: NewsViewModel
     lateinit var newsAdapter: NewsAdapter
-    lateinit var binding:FragmentFavouriteBinding
+    private var _binding: FragmentFavouriteBinding? = null
+    private val binding get() = requireNotNull(_binding)
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentFavouriteBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentFavouriteBinding.bind(view)
-
         newsViewModel = (activity as NewsActivity).newsViewModel
         setUpFavouritesRecycler()
         newsAdapter.setOnItemClickListener {
